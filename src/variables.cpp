@@ -12,6 +12,8 @@ WiFiClient espClient;
 PubSubClient mqttClient(espClient);
 Preferences preferences;
 
+unsigned int fullScreenWidth;
+unsigned int fullScreenHeight;
 unsigned int halfScreenWidth;
 unsigned int halfScreenHeight;
 unsigned int quarterScreenWidth;

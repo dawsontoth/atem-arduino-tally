@@ -3,5 +3,5 @@
 void saveCameraIndex()
 {
     preferences.putUInt("myCameraIndex", myCameraIndex);
-    updateATEMLabels();
+    updateATEMLabels(true);
 }

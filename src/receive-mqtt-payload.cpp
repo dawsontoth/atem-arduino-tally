@@ -16,12 +16,18 @@ void receiveMQTTPayload(char *topic, byte *payload, unsigned int length)
     else
     {
       String current = "";
+      bool changed = false;
       int j = 0;
       for (int i = 0; i < length; i++)
       {
         if (payload[i] == ',')
         {
-          atemState[j] = current.toInt();
+          int newState = current.toInt();
+          if (atemState[j] != newState)
+          {
+            atemState[j] = newState;
+            changed = true;
+          }
           current = "";
           j = j + 1;
         }
@@ -30,8 +36,16 @@ void receiveMQTTPayload(char *topic, byte *payload, unsigned int length)
           current = current + (char)payload[i];
         }
       }
-      atemState[j] = current.toInt();
-      updateATEMLabels();
+      int newState = current.toInt();
+      if (atemState[j] != newState)
+      {
+        atemState[j] = newState;
+        changed = true;
+      }
+      if (changed)
+      {
+        updateATEMLabels(false);
+      }
     }
   }
 }
