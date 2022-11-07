@@ -23,7 +23,7 @@ void setup()
 void loop()
 {
   M5.update();
-  ArduinoOTA.handle();
+  //ArduinoOTA.handle();
   checkButtonStates();
 
   if (!mqttClient.connected())

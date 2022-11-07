@@ -8,11 +8,11 @@ void setupWifi(bool forcePortal)
   WiFiSettings.onPortal = []()
   {
     drawLabel(BLACK, RED, "Ready to Configure!", 2);
-    startOTA();
+    //startOTA();
   };
   WiFiSettings.onPortalWaitLoop = []()
   {
-    ArduinoOTA.handle();
+    //ArduinoOTA.handle();
   };
 
   if (forcePortal)
@@ -26,5 +26,5 @@ void setupWifi(bool forcePortal)
     WiFi.config(IPAddress(0, 0, 0, 0), IPAddress(0, 0, 0, 0), IPAddress(0, 0, 0, 0));
   }
 
-  startOTA();
+  //startOTA();
 }
